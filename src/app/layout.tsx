@@ -57,7 +57,10 @@ export default async function RootLayout({
     <html lang="en"
       suppressHydrationWarning
       className={inter.className}>
-      <body className="dark:bg-neutral-950 bg-neutral-50 dark:text-neutral-50 text-neutral-950">{children}</body>
+      <body className="dark:bg-neutral-950 bg-neutral-50 dark:text-neutral-50 text-neutral-950">
+        {/* Toast component and loading indicator */}
+        {children}
+      </body>
     </html>
   );
 }
