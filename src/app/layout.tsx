@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import cl from 'classnames'
 import "./globals.css";
+import { ThemeProvider } from "@/components/themeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,9 +57,16 @@ export default async function RootLayout({
     <html lang="en"
       suppressHydrationWarning
       className={inter.className}>
-      <body className="dark:bg-neutral-950 bg-neutral-50 dark:text-neutral-50 text-neutral-950">
+      <body >
         {/* Toast component and loading indicator */}
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

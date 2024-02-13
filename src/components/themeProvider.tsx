@@ -1,7 +1,9 @@
-import React from 'react'
+"use client"
 
-export default function ThemeProvider({ children }: React.PropsWithChildren) {
-    return (
-        <div>{children}</div>
-    )
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { type ThemeProviderProps } from "next-themes/dist/types"
+
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+    return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
