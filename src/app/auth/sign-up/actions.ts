@@ -4,11 +4,11 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { createClient } from "@/utils/supabase/server";
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function signup(formData: FormData) {
   const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = supabaseServer(cookieStore);
 
   // type-casting here for convenience
   // in practice, you should validate your inputs

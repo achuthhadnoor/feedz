@@ -3,8 +3,18 @@ import Link from 'next/link'
 import { RiGoogleFill } from "react-icons/ri";
 import { Button } from '@/components/ui/button'
 import { login } from './actions';
+import { createClient } from '@/utils/supabase/client';
 
 export default function Page() {
+    const handleGoogleSignin = () => {
+        const supabase = createClient();
+        supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                redirectTo: location.origin + '/auth/callback'
+            }
+        })
+    }
     return (
         <div>
             <h1 className='text-xl font-bold'>Sign in to you account</h1>
@@ -26,7 +36,7 @@ export default function Page() {
                     Sign in
                 </Button>
                 <label>--- OR ---</label>
-                <Button variant={"outline"} className='gap-2 '>
+                <Button variant={"outline"} className='gap-2 ' onClick={handleGoogleSignin}>
                     <RiGoogleFill />
                     Sign in with google
                 </Button>

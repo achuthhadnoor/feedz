@@ -10,9 +10,9 @@ export default async function AuthLayout({ children }: ILayoutProps) {
     const cookieStore = cookies()
     const supabase = supabaseServer(cookieStore)
 
-    const { data, error } = await supabase.auth.getUser()
-    if (error || !data?.user) {
-        redirect('/auth/sign-up')
+    const { data } = await supabase.auth.getUser()
+    if (data?.user) {
+        redirect('/')
     }
     return (
         <>{children}</>

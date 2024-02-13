@@ -1,7 +1,19 @@
+'use client'
 import Link from 'next/link'
 import { signup } from './actions'
+import { createClient } from '@/utils/supabase/client'
+import { Button } from '@/components/ui/button'
 
 export default function Page() {
+    const handleSignupOauth = () => {
+        const supabase = createClient()
+        supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: location.origin + '/auth/callback'
+            }
+        })
+    }
     return (
         <div>
             <h1 className='text-xl font-bold'>Create an account</h1>
@@ -14,9 +26,9 @@ export default function Page() {
                         Sign up
                     </button>
                 </div>
-                <label>--- OR ---</label>
-                <button>Sign up with google</button>
             </form>
+            <label>--- OR ---</label>
+            <Button variant={'outline'} onClick={handleSignupOauth}>Sign up with google</Button>
         </div>
     )
 }
