@@ -1,15 +1,7 @@
-// import { createClient } from "@/utils/supabase/server";
-// import { cookies } from "next/headers";
-// import { redirect } from "next/navigation";
+import getUserId from "@/lib/auth";
 
 export default async function Home() {
-  // const cookieStore = cookies()
-  // const supabase = createClient(cookieStore)
-
-  // const { data, error } = await supabase.auth.getUser()
-  // if (error || !data?.user) {
-  //   redirect('/')
-  // }
+  const tenantId = getUserId()
   return (
     <main className="">
       Feedz

@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { RiGoogleFill } from "react-icons/ri";
 import { Button } from '@/components/ui/button'
 import { login } from './actions';
-import { createClient } from '@/utils/supabase/client';
+import { supabaseClient } from '@/utils/supabase/client';
 
 export default function Page() {
     const handleGoogleSignin = () => {
-        const supabase = createClient();
+        const supabase = supabaseClient();
         supabase.auth.signInWithOAuth({
             provider: "google",
             options: {

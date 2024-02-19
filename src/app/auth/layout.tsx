@@ -11,6 +11,9 @@ export default async function AuthLayout({ children }: ILayoutProps) {
     const supabase = supabaseServer(cookieStore)
 
     const { data } = await supabase.auth.getUser()
+    console.log('====================================');
+    console.log(data);
+    console.log('====================================');
     if (data?.user) {
         redirect('/')
     }

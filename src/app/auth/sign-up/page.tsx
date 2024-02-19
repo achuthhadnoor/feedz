@@ -1,12 +1,12 @@
 'use client'
 import Link from 'next/link'
 import { signup } from './actions'
-import { createClient } from '@/utils/supabase/client'
+import { supabaseClient } from '@/utils/supabase/client'
 import { Button } from '@/components/ui/button'
 
 export default function Page() {
     const handleSignupOauth = () => {
-        const supabase = createClient()
+        const supabase = supabaseClient()
         supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
